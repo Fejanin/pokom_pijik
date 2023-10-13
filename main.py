@@ -55,4 +55,4 @@ with open('REPORT.txt', 'w') as f:
     for i in report:
         f.write(i + '\n')
     f.write('\n')
-    f.write(f'Из {total_weight}кг перенесено в бланк Крыма {transferred_weight}кг.')
+    f.write(f'Из {total_weight}кг перенесено в бланк Херсона {transferred_weight}кг.')
