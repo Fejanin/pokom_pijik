@@ -2,6 +2,8 @@ import openpyxl
 
 
 ERROR = []
+COLUMN = 'V'
+
 report = []
 total_weight = 0
 transferred_weight = 0
@@ -31,11 +33,11 @@ wb_Sochi = openpyxl.load_workbook(file_Sochi)
 ws_Sochi = wb_Sochi.active
 Sochi = ws_Sochi.iter_rows(1, ws_Sochi.max_row)
 for num, i in enumerate(Sochi, 1):
-    adress_Sochi = f'U{num}'
+    adress_Sochi = f'{COLUMN}{num}'
     if i[3].value in sku_svarog and ws_Sochi[adress_Sochi].value: # найден штрих-код и заказ не 0
         total_weight += ws_Sochi[adress_Sochi].value
         if sku_svarog[i[3].value][1]: # товар есть в крымском файле
-            adress_Krim = f'U{sku_svarog[i[3].value][3]}'
+            adress_Krim = f'{COLUMN}{sku_svarog[i[3].value][3]}'
             ws_Krim[adress_Krim] = ws_Sochi[adress_Sochi].value
             transferred_weight += ws_Sochi[adress_Sochi].value
             ws_Sochi[adress_Sochi] = 0
